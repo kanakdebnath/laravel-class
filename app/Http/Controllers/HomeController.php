@@ -10,7 +10,6 @@ class HomeController extends Controller
         return view('index');
     }
 
-
     public function about(){
         return view('abc.about');
     }

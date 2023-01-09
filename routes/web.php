@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/' , 'App\Http\Controllers\HomeController@index');
-Route::get('/about' , 'App\Http\Controllers\HomeController@about');
-Route::get('/contact' , 'App\Http\Controllers\HomeController@contact');
+Route::get('/home' , 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('/about' , 'App\Http\Controllers\HomeController@about')->name('about');
+Route::get('/contact' , 'App\Http\Controllers\HomeController@contact')->name('contact');
 Route::post('/contact-submit' , 'App\Http\Controllers\HomeController@contact_submit');
 
 
@@ -32,4 +33,4 @@ Route::get('/about/sjdgjf/sdjjfh/sdjgfj', function(){
 
 Route::get('/user', function(){
     return view('user');
-})->middleware('age');
+})->name('user');
