@@ -49,11 +49,12 @@ public function edit($id){
 }
     
 // Delete category 
-public function delete($id){
+public function delete(Request $request){
 
-    $result = DB::table('categories')->where('id',$id)->delete();
+    $result = DB::table('categories')->where('id',$request->id)->delete();
     if($result){
-        return redirect()->route('all_category')->with('error','Category Deleted');
+        return response()->json(['message' => 'Category Deleted Successfully.']);
+
     }else{
         return redirect()->back();
     }
@@ -70,7 +71,7 @@ public function update(Request $request){
     $update = DB::table('categories') ->where('id', $request->id)->limit(1)->update($data); 
 
     if($update){
-        return redirect()->route('all_category')->with('message','Category Updated Successfully');;
+        return redirect()->route('all_category')->with('message','Category Updated Successfully');
     }else{
         return redirect()->back();
     }

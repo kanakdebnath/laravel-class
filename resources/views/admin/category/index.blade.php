@@ -46,7 +46,7 @@
                       <a href="{{ route('category_edit', $item->id) }}">
                       <span class="badge rounded-pill text-bg-warning">Edit</span>
                     </a>
-                    <a class="button-delete" href="{{ route('category_delete', $item->id) }}">
+                    <a class="button-delete" data-id="{{$item->id}}" data-url='{{ route('category_delete') }}' href='#'>
                       <span class="badge rounded-pill text-bg-danger">Delete</span>
                     </a>
                     </td>

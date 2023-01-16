@@ -8,6 +8,7 @@
   <title>Dashboard - NiceAdmin Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -123,31 +124,39 @@
         toastr.warning("{{ session('warning') }}");
     @endif
   </script>
-  
+
   <script>
 
-
-$(document).on("click", ".button-delete", function() {
-
-  Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
-  }
-})
-
- });
+$(document).on('click', '.button-delete', function (e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var url = $(this).data('url');
+    Swal.fire({
+            title: "Are you sure!",
+            type: "warning",
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes!",
+            showCancelButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+          $.ajax({
+              type: "POST",
+              url: url,
+              data: {
+                "_token": "{{ csrf_token() }}",
+                "id": id
+              },
+              success: function (data) {
+                    toastr.success(data.message);
+                    setTimeout(function () {
+                      location.reload();
+                    }, 2500);
+                    
+                  }         
+          });
+      }
+    })
+});
 
     
   </script>

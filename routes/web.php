@@ -30,7 +30,7 @@ Route::get('/admin/add-category', 'App\Http\Controllers\Admin\CategoryController
 Route::post('/admin/store-category', 'App\Http\Controllers\Admin\CategoryController@store')->name('category_store');
 
 Route::get('/admin/edit-category/{id}', 'App\Http\Controllers\Admin\CategoryController@edit')->name('category_edit');
-Route::get('/admin/delete-category/{id}', 'App\Http\Controllers\Admin\CategoryController@delete')->name('category_delete');
+Route::post('/admin/delete-category', 'App\Http\Controllers\Admin\CategoryController@delete')->name('category_delete');
 
 Route::post('/admin/update-category', 'App\Http\Controllers\Admin\CategoryController@update')->name('category_update');
 
