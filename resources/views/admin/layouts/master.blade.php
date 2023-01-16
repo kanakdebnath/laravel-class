@@ -26,8 +26,13 @@
   <link href="{{ asset('backend/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
   <link href="{{ asset('backend/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
+  {{-- sweetalert  --}}
+  <link rel="stylesheet" href="{{ asset('backend/assets/css/sweetalert2.min.css') }}">
   <!-- Template Main CSS File -->
   <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
+
+  {{-- toastr css  --}}
+  <link rel="stylesheet" type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
@@ -71,6 +76,81 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('backend/assets/js/main.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ asset('backend/assets/js/jquery.js') }}"></script>
+
+  <!-- Sweet alert JS File -->
+  <script src="{{ asset('backend/assets/js/sweetalert2.min.js') }}"></script>
+
+  <!-- toastr JS File -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+  <script>
+    @if(Session::has('message'))
+    toastr.options =
+    {
+      "closeButton" : true,
+      "progressBar" : true
+    }
+        toastr.success("{{ session('message') }}");
+    @endif
+  
+    @if(Session::has('error'))
+    toastr.options =
+    {
+      "closeButton" : true,
+      "progressBar" : true
+    }
+        toastr.error("{{ session('error') }}");
+    @endif
+  
+    @if(Session::has('info'))
+    toastr.options =
+    {
+      "closeButton" : true,
+      "progressBar" : true
+    }
+        toastr.info("{{ session('info') }}");
+    @endif
+  
+    @if(Session::has('warning'))
+    toastr.options =
+    {
+      "closeButton" : true,
+      "progressBar" : true
+    }
+        toastr.warning("{{ session('warning') }}");
+    @endif
+  </script>
+  
+  <script>
+
+
+$(document).on("click", ".button-delete", function() {
+
+  Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  }
+})
+
+ });
+
+    
+  </script>
 
 </body>
 

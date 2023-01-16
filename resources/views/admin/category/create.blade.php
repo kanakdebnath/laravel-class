@@ -23,10 +23,11 @@
             <h5 class="card-title">Category Create</h5>
             
             <!-- Custom Styled Validation -->
-            <form class="row g-3 needs-validation" novalidate>
+            <form action='{{ route('category_store') }}' method="post" class="row g-3 needs-validation" novalidate>
+              @csrf
               <div class="col-md-6">
                 <label for="validationCustom01" class="form-label">Category name</label>
-                <input type="text" class="form-control" name="category" id="validationCustom01" required>
+                <input type="text" placeholder="category name" class="form-control" name="category" id="validationCustom01" required>
               </div>
               <div class="col-md-6">
                 <label for="validationCustom04" class="form-label">Status</label>

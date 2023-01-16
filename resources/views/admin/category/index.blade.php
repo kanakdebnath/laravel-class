@@ -2,6 +2,7 @@
 
 @section('contain')
 
+
 <div class="pagetitle">
     <h1>Category</h1>
     <nav>
@@ -28,47 +29,29 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Start Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($results as $item)
+                      
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
+                    <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->status }}</td>
+                    <td>{{ $item->created_at }}</td>
+                    <td>
+                      <a href="{{ route('category_edit', $item->id) }}">
+                      <span class="badge rounded-pill text-bg-warning">Edit</span>
+                    </a>
+                    <a class="button-delete" href="{{ route('category_delete', $item->id) }}">
+                      <span class="badge rounded-pill text-bg-danger">Delete</span>
+                    </a>
+                    </td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td>2014-12-05</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td>2011-08-12</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td>2012-06-11</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td>2011-04-19</td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
               <!-- End Bordered Table -->
