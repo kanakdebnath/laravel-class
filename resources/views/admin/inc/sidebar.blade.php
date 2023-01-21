@@ -14,10 +14,10 @@
 
       
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav-category" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Manage Category</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="forms-nav-category" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{ route('all_category') }}">
               <i class="bi bi-circle"></i><span>All Categories</span>
@@ -32,6 +32,32 @@
       </li><!-- End Forms Nav -->
 
       {{-- category section  --}}
+
+
+
+      {{-- post section  --}}
+
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav-post" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Manage Post</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav-post" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('all_post') }}">
+              <i class="bi bi-circle"></i><span>All Posts</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('post_add') }}">
+              <i class="bi bi-circle"></i><span>Add post</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      {{-- post section  --}}
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">

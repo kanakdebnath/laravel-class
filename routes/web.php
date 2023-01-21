@@ -19,7 +19,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/contact' , 'App\Http\Controllers\HomeController@contact')->name('contact');
 // Route::post('/contact-submit' , 'App\Http\Controllers\HomeController@contact_submit');
 
+Route::group(['middleware' => 'auth'] ,function(){
 
+
+    
 Route::get('/admin', function () {
     return view('admin.dashboard');
 });
@@ -35,12 +38,25 @@ Route::post('/admin/delete-category', 'App\Http\Controllers\Admin\CategoryContro
 Route::post('/admin/update-category', 'App\Http\Controllers\Admin\CategoryController@update')->name('category_update');
 
 
+
+// For post route 
+Route::get('/admin/all-post', 'App\Http\Controllers\Admin\PostController@index')->name('all_post');
+Route::get('/admin/add-post', 'App\Http\Controllers\Admin\PostController@create')->name('post_add');
+Route::post('/admin/store-post', 'App\Http\Controllers\Admin\PostController@store')->name('post_store');
+
+
+
+
+});
+
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('admin.dashboard');
     })->name('dashboard');
 });

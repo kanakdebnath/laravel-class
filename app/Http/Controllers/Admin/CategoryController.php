@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use DB;
+use App\Models\Category;
+
+use Illuminate\Support\Str;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -27,6 +30,7 @@ class CategoryController extends Controller
         $data = [];
         $data['name'] = $request->category;
         $data['status'] = $request->status;
+        $data['slug'] = Str::slug($request->category);
 
         $category = DB::table('categories')->insert($data);
 
