@@ -34,7 +34,7 @@
 
             
             <!-- Custom Styled Validation -->
-            <form action='{{ route('post_store') }}' method="post" class="row g-3 needs-validation" novalidate>
+            <form action='{{ route('post_store') }}' enctype="multipart/form-data" method="post" class="row g-3 needs-validation" novalidate>
               @csrf
               <div class="col-md-6">
                 <label for="validationCustom01" class="form-label">Post Title</label>
@@ -59,6 +59,12 @@
               <div class="col-md-12">
                 <label for="validationCustom04" class="form-label"> Description</label>
                 <textarea name="description" required class="form-control summernote" id="" cols="30" rows="10"></textarea>
+              </div>
+
+              
+              <div class="col-md-6">
+                <label for="validationCustom09" class="form-label">Photo</label>
+               <input type="file" name="photo" class="form-control">
               </div>
 
               <div class="col-md-6">

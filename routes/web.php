@@ -44,6 +44,10 @@ Route::get('/admin/all-post', 'App\Http\Controllers\Admin\PostController@index')
 Route::get('/admin/add-post', 'App\Http\Controllers\Admin\PostController@create')->name('post_add');
 Route::post('/admin/store-post', 'App\Http\Controllers\Admin\PostController@store')->name('post_store');
 
+Route::get('/admin/edit-post/{id}', 'App\Http\Controllers\Admin\PostController@edit')->name('post_edit');
+Route::post('/admin/delete-post', 'App\Http\Controllers\Admin\PostController@delete')->name('post_delete');
+Route::post('/admin/update-post', 'App\Http\Controllers\Admin\PostController@update')->name('post_update');
+
 
 
 
