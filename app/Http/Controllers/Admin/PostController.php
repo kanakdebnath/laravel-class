@@ -54,9 +54,9 @@ public function store(Request $request){
 
         // for resize image 
         $resize = Image::make($file->getRealPath());
-        $resize->resize(1100,1100);
+        $resize->resize(700,435);
 
-        $path = public_path(). '/uploads/product/';
+        $path = public_path(). '/uploads/post/';
         $resize->save($path.'/'.$photo);
 
         $post ->photo = $photo;
@@ -90,13 +90,14 @@ public function edit($id){
 // Delete category 
 public function delete(Request $request){
 
-    $result = Post::find($request->id)->delete();
-    if($result){
-        return response()->json(['message' => 'Post Deleted Successfully.']);
-
-    }else{
-        return redirect()->back();
+    $result = Post::find($request->id);
+    if($result->photo){
+        $path = public_path(). '/uploads/post/'.$result->photo;
+        unlink($path);
     }
+
+    $result->delete();
+    return response()->json(['message' => 'Post Deleted Successfully.']);
 }
 
 
@@ -130,15 +131,15 @@ public function update(Request $request){
 
         // for resize image 
         $resize = Image::make($file->getRealPath());
-        $resize->resize(1100,1100);
+        $resize->resize(700,435);
 
         // Old Photo Delete 
         if($request->old_photo){
-            $path = public_path(). '/uploads/product/'.$request->old_photo;
+            $path = public_path(). '/uploads/post/'.$request->old_photo;
             unlink($path);
         }
 
-        $path = public_path(). '/uploads/product/';
+        $path = public_path(). '/uploads/post/';
         $resize->save($path.'/'.$photo);
 
         $post ->photo = $photo;

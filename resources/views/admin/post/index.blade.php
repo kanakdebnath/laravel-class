@@ -45,7 +45,7 @@
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->category->name }}</td>
                     <td>
-                      <img width="120" height="90" src="{{ asset('uploads/product').'/'.$item->photo }}" alt="">
+                      <img width="120" height="90" src="{{ asset('uploads/post').'/'.$item->photo }}" alt="">
                     </td>
                     <td>{{ $item->user->name }}</td>
                     <td>{{ $item->status }}</td>
