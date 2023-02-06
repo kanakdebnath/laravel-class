@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/home' , 'App\Http\Controllers\HomeController@home');
 Route::get('/' , 'App\Http\Controllers\HomeController@index');
 
+
+
+Route::get('/logout' , 'App\Http\Controllers\HomeController@logout')->name('logout');
 
 
 // Route::get('/home' , 'App\Http\Controllers\HomeController@index')->name('home');
@@ -22,10 +26,9 @@ Route::get('/' , 'App\Http\Controllers\HomeController@index');
 // Route::get('/contact' , 'App\Http\Controllers\HomeController@contact')->name('contact');
 // Route::post('/contact-submit' , 'App\Http\Controllers\HomeController@contact_submit');
 
-Route::group(['middleware' => 'auth'] ,function(){
+Route::group(['middleware' => ['auth','admin']] ,function(){
 
 
-    
 Route::get('/admin', function () {
     return view('admin.dashboard');
 });
